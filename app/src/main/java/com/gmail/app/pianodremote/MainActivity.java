@@ -17,18 +17,16 @@
  */
 
 package com.gmail.app.pianodremote;
-//todo make icon
-//todo make widgets
-//todo alternative resolutions, particularly fix tablet layout
-//todo check landscape view pre lollipop
-//todo search and add stations
-//todo volume keys control volume
-//todo fab animation
 //todo play/pause animation
 //todo rate animations?
 //todo skip animations
+//todo check landscape view pre lollipop and lollipop
+//todo search and add stations
+//todo alternative resolutions, particularly fix tablet layout
+//todo make widgets
 //todo make cover updates seamless, so we never get flashes of the other cover
 //todo activity/fragment transition animations
+//todo pianod2
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -42,18 +40,23 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.melnykov.fab.FloatingActionButton;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -126,8 +129,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void sendVolume(Integer volume) {
-        volume = volume - 100;
-        volume = volume / 3;
+        if (volume < -35) volume = -35;
+        if (volume > 35) volume = 35;
         socketWrite("Volume " + String.valueOf(volume));
     }
 
@@ -503,7 +506,9 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                sendVolume(seekBar.getProgress());
+                int volume = seekBar.getProgress() - 100;
+                volume = volume / 3;
+                sendVolume(volume);
                 //Log.d("seekBar", String.valueOf(seekBar.getProgress()));
             }
         });
@@ -542,6 +547,12 @@ public class MainActivity extends ActionBarActivity {
         catch (Exception e) {
             e.printStackTrace();
         }
+        //FAB ANIMATION
+        TranslateAnimation anim = new TranslateAnimation(0,0,1000,0);
+        anim.setDuration(1000);
+        anim.setFillAfter(true);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.startAnimation(anim);
         //restart the background updater
         if (mainLoop == null) {
             mainLoop = new backgroundUpdater();
@@ -1105,4 +1116,31 @@ public class MainActivity extends ActionBarActivity {
 
         }
     }
+
+    /////////////////////////////////////////////
+    //
+    //  GRAB VOLUME KEYS
+    //
+    ////////////////////////////////////////////
+
+    @Override
+    public boolean dispatchKeyEvent(@NonNull KeyEvent event) {
+        int action = event.getAction();
+        int keyCode = event.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                if (action == KeyEvent.ACTION_DOWN) {
+                    sendVolume(currentVolume + 5);
+                }
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (action == KeyEvent.ACTION_DOWN) {
+                    sendVolume(currentVolume - 5);
+                }
+                return true;
+            default:
+                return super.dispatchKeyEvent(event);
+        }
+    }
+
 }
