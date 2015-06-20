@@ -1,0 +1,186 @@
+<!--
+  ~ Pianod Remote, for pandora
+  ~ Copyright (c) 2015. Michael Obst
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    style="@style/Base.V21.Theme.AppCompat"
+    android:id="@+id/something"
+    android:minWidth="@dimen/activity_horizontal_margin"
+    android:minHeight="@dimen/activity_horizontal_margin"
+    android:longClickable="false"
+    android:gravity="fill_horizontal">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="@color/transparent"
+        app:theme="@style/CustomToolbarTheme"
+        app:popupTheme="@style/MyTheme"/>
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/ic_launcher"
+        android:cropToPadding="false"
+        android:textAlignment="gravity"
+        android:baselineAlignBottom="false"
+        android:elevation="-1dp"
+        android:contentDescription="@string/albumArt"
+        android:clickable="false"
+        android:adjustViewBounds="true"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:scaleType="fitEnd"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true" />
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/relativeLayout2"
+        android:background="@color/thememainlight"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/imageView">
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:max="200"
+            android:progress="100"
+            android:layout_above="@+id/textStatus"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="39dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Album"
+            android:id="@+id/textView"
+            android:textSize="20dp"
+            android:layout_below="@+id/textView2"
+            android:textColor="@color/textlevel2" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Artist"
+            android:id="@+id/textView2"
+            android:textSize="20dp"
+            android:layout_below="@+id/textView3"
+            android:textColor="@color/textlevel2" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Song"
+            android:id="@+id/textView3"
+            android:textSize="24dp"
+            android:textColor="@color/textlevel1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:id="@+id/textStatus"
+            android:textColor="@color/textlevel3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageButton
+            android:layout_width="39dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/skipImageButton"
+            android:src="@drawable/fastforward"
+            android:onClick="sendSkip"
+            android:background="@android:color/transparent"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:maxHeight="100dp"
+            android:layout_above="@+id/seekBar"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="39dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/likeImageButton"
+            android:src="@drawable/thumbupclear"
+            android:onClick="sendLike"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:maxHeight="80dp"
+            android:layout_alignTop="@+id/skipImageButton"
+            android:layout_toRightOf="@+id/skipImageButton"
+            android:layout_toEndOf="@+id/skipImageButton"
+            android:layout_marginLeft="26dp" />
+
+        <ImageButton
+            android:layout_width="39dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/dislikeImageButton"
+            android:src="@drawable/thumbsdownclear"
+            android:onClick="sendDislike"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:maxHeight="80dp"
+            android:adjustViewBounds="true"
+            android:layout_alignTop="@+id/skipImageButton"
+            android:layout_toLeftOf="@+id/skipImageButton"
+            android:layout_toStartOf="@+id/skipImageButton"
+            android:layout_marginRight="26dp" />
+
+    </RelativeLayout>
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/ic_play"
+        fab:fab_colorNormal="@color/themehighlight"
+        fab:fab_colorPressed="@color/themehighlight"
+        fab:fab_colorRipple="@color/textwhite"
+        android:onClick="sendPlayPause"
+        android:elevation="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="-26dp"
+        android:layout_toLeftOf="@+id/imageView" />
+
+</RelativeLayout>

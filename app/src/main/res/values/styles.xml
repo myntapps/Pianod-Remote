@@ -1,0 +1,91 @@
+<!--
+  ~ Pianod Remote, for pandora
+  ~ Copyright (c) 2015. Michael Obst
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+    <!-- Base application theme.
+    <style name="AppTheme" parent="Theme.Application">
+
+    </style>
+
+    <style name="Theme.Application" parent="@style/Theme.AppCompat" />
+
+    <style name="Theme.Settings" parent="@style/Theme.Application">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+
+        <item name="toolbarStyle">@style/Widget.Toolbar</item>
+    </style>
+
+    <style name="Widget.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:navigationIcon">?attr/homeAsUpIndicator</item>
+        <item name="navigationIcon">?attr/homeAsUpIndicator</item>
+    </style>
+    -->
+
+        <style name="MyTheme" parent="MyTheme.Base">
+        </style>
+        <!-- Base theme applied no matter what API -->
+        <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+            <item name="android:textColorPrimary">#87000000</item>
+            <item name="android:textColorSecondary">#54000000</item>
+            <item name="android:windowNoTitle">true</item>
+            <!--We will be using the toolbar so no need to show ActionBar-->
+            <item name="windowActionBar">false</item>
+            <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+            <!-- colorPrimary is used for the default action bar background -->
+            <item name="colorPrimary">#3f51b5</item>
+            <!-- colorPrimaryDark is used for the status bar -->
+            <item name="colorPrimaryDark">#303f9f</item>
+            <!-- colorAccent is used as the default value for colorControlActivated
+                 which is used to tint widgets -->
+            <item name="colorAccent">#FFab40</item>
+            <!-- You can also set colorControlNormal, colorControlActivated
+                colorControlHighlight and colorSwitchThumbNormal. -->
+            <item name="selectableItemBackground">@drawable/ripple</item>
+            <item name="android:selectableItemBackground">@drawable/ripple</item>
+        </style>
+        <style name="CustomToolbarTheme" parent="MyTheme.Base">
+            <!-- android:textColorPrimary is the  color of the title text
+                   in the Toolbar, in the Theme.AppCompat theme:  -->
+            <item name="android:textColorPrimary">#ffffffff</item>
+
+            <!-- android:textColorPrimaryInverse is the  color of the title
+                 text in the Toolbar, in the Theme.AppCompat.Light theme:  -->
+            <!-- <item name="android:textColorPrimaryInverse">@color/abc_primary_text_material_light</item> -->
+
+            <!-- android:actionMenuTextColor is the color of the text of
+                  action (menu) items in the Toolbar, at least in the
+                  Theme.AppCompat theme.
+                  For some reason, they already get the textColorPrimary
+                  when running on API 21, but not on older versions of
+                  Android, so this is only necessary to support older
+                  Android versions.-->
+            <!-- android:textColorSecondary is the color of the menu
+                 overflow icon (three vertical dots) -->
+            <item name="android:textColorSecondary">@color/abc_secondary_text_material_dark</item>
+
+            <!-- This would set the toolbar's background color,
+                  but setting this also changes the popup menu's background,
+                  even if we define popupTheme for our <Toolbar> -->
+            <!-- <item name="android:background">@color/color_primary</item> -->
+        </style>
+
+
+</resources>

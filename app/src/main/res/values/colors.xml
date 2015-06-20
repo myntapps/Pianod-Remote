@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Pianod Remote, for pandora
+  ~ Copyright (c) 2015. Michael Obst
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!-- res/values/colors.xml -->
+<resources>
+    <!-- main color for drawable-v21/my_ripple -->
+    <color name="my_color_highlight">#FFE99E63</color>
+    <!-- main color for drawable/my_ripple -->
+    <color name="my_color_highlight_press">#77E99E63</color>
+    <color name="my_color_highlight_focus">#CCE99E63</color>
+
+
+    <color name="themehighlight">#FFab40</color>
+    <color name="thememainlight">#3f51b5</color>
+    <color name="thememaindark">#303f9f</color>
+    <color name="textwhite">#ffffffff</color>
+    <color name="textlevel1">#87ffffff</color>
+    <color name="textlevel2">#54ffffff</color>
+    <color name="textlevel3">#26ffffff</color>
+
+    <color name="transparentlevel1">#87000000</color>
+    <color name="transparentlevel2">#54000000</color>
+    <color name="transparentlevel3">#26000000</color>
+    <color name="transparent">#00000000</color>
+
+</resources>

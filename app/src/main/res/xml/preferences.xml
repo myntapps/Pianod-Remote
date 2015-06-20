@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Pianod Remote, for pandora
+  ~ Copyright (c) 2015. Michael Obst
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="Pianod Server Settings" >
+        <EditTextPreference
+            android:title="Pianod Server IP"
+            android:summary="%s"
+            android:key="prefSocketIP"
+            android:inputType="phone"
+            android:defaultValue="192.168.1.100"/>
+        <EditTextPreference
+            android:title="Pianod Server Port"
+            android:summary="%s"
+            android:key="prefSocketPort"
+            android:inputType="number"
+            android:defaultValue="4445"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Pianod User Settings" >
+        <EditTextPreference
+            android:title="Pianod User Name"
+            android:summary="%s"
+            android:key="prefUserName"
+            android:defaultValue="admin"/>
+        <EditTextPreference
+            android:title="Pianod User Password"
+            android:summary="%s"
+            android:key="prefUserPassword"
+            android:inputType="textPassword"
+            android:defaultValue="admin"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Pandora Settings" >
+        <EditTextPreference
+            android:title="Pandora Username"
+            android:summary="%s"
+            android:key="prefPandoraUser"
+            android:defaultValue=""/>
+        <EditTextPreference
+            android:title="Pandora Password"
+            android:key="prefPandoraPassword"
+            android:inputType="textPassword"
+            android:defaultValue=""/>
+    </PreferenceCategory>
+</PreferenceScreen>
