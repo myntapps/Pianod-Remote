@@ -10,4 +10,4 @@ Or download the APK directly from here, https://github.com/myntapps/Pianod-Remot
 
 Pianod is the work of Perette Barella, checkout deviousfish.com/pianod and deviousfish.com/pianod2
 
-For now this only works with pinod, upgrade to support pianod2 as well is planned.
+For now this only works with pianod, upgrade to support pianod2 as well is planned.
