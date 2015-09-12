@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gmail.app.pianodremote.ChannelActivity"
+            android:name=".StationActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity

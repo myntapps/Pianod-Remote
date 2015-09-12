@@ -16,34 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package com.gmail.app.pianodremote;
 
+public class addableStation {
+    //holds data about stations
+    public String stationID;
+    public String stationArtist;
+    public String stationSong;
+    public String stationStation;
 
-
-
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
-
-    defaultConfig {
-        applicationId "com.gmail.app.mynt.pianodremote"
-        minSdkVersion 11
-        targetSdkVersion 22
-        versionCode 3
-        versionName "1.2"
+    public addableStation( String a, String b, String c, String d){
+        stationID = a;
+        stationArtist = b;
+        stationSong = c;
+        stationStation = d;
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:support-v4:22.2.0'
-    compile 'com.melnykov:floatingactionbutton:1.3.0'
 }

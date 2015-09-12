@@ -22,7 +22,7 @@
     <string name="app_name">Pianod Remote</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="action_channels">Channels</string>
+    <string name="action_stations">Stations</string>
     <string name="action_controller">Main</string>
     <string name="albumArt">Album Art</string>
 

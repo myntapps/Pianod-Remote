@@ -22,7 +22,7 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/action_controller" android:title="@string/action_controller"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_channels" android:title="@string/action_channels"
+    <item android:id="@+id/action_stations" android:title="@string/action_stations"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />

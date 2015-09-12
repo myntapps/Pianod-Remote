@@ -20,13 +20,21 @@ package com.gmail.app.pianodremote;
 //todo play/pause animation
 //todo rate animations?
 //todo skip animations
-//todo check landscape view pre lollipop and lollipop
 //todo search and add stations
+//todo delete stations
+//todo rename stations
+//todo other station stuff? view seeds etc...?
 //todo alternative resolutions, particularly fix tablet layout
 //todo make widgets
 //todo make cover updates seamless, so we never get flashes of the other cover
+//todo animate cover transitions
 //todo activity/fragment transition animations
+//todo notification options
 //todo pianod2
+//todo tasker integration
+//todo help page
+//todo about page
+//todo better loading, when song is being fetched from pandora
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -43,6 +51,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -72,7 +81,7 @@ import java.net.URL;
 import java.util.PriorityQueue;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     //global variables
     private Boolean isPandoraLogged = false;
@@ -466,8 +475,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("draw","load create");
-
+        Log.d("draw", "load create");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 getWindow().getDecorView().setSystemUiVisibility(
@@ -475,16 +485,22 @@ public class MainActivity extends ActionBarActivity {
                                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                 Window window = getWindow();
                 window.setStatusBarColor(getResources().getColor(R.color.transparentlevel1));
+                int height = 0;
+                int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+                if (resourceId > 0) {
+                    height = getResources().getDimensionPixelSize(resourceId);
+                }
+                toolbar.setPadding(0, height, 0, 0);
             }
             else {
                 Window window = getWindow();
                 window.setStatusBarColor(getResources().getColor(R.color.thememaindark));
-                android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-                toolbar.layout(0,0,0,0);
+                android.support.v7.widget.Toolbar toolbar2 = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+                toolbar2.layout(0,0,0,0);
             }
         }
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+
 
 
         statusText = (TextView) findViewById(R.id.textStatus);
@@ -516,7 +532,6 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-
     @Override
     public void onPause() {
         super.onPause();
@@ -531,6 +546,10 @@ public class MainActivity extends ActionBarActivity {
         super.onResume();
         statusText = (TextView) findViewById(R.id.textStatus);
         Log.e("resume","resume");
+        //set navbar colour
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.thememaindark));
+        }
         //load the last saved album art form the file and apply it
         try {
             //todo figure out whether to load generic or album somehow?
@@ -589,8 +608,8 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_settings:
                 openSettings();
                 return true;
-            case R.id.action_channels:
-                openChannels(null);
+            case R.id.action_stations:
+                openStations(null);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -604,9 +623,9 @@ public class MainActivity extends ActionBarActivity {
         startActivity(new Intent(MainActivity.this, SettingsActivity.class));
     }
 
-    public void openChannels(View view) {
-        Log.d("draw","load channels");
-        startActivity(new Intent(MainActivity.this, ChannelActivity.class));
+    public void openStations(View view) {
+        Log.d("draw","load stations");
+        startActivity(new Intent(MainActivity.this, StationActivity.class));
     }
 
     //////////////////////////
@@ -614,7 +633,6 @@ public class MainActivity extends ActionBarActivity {
     //  album art download async task
     //
     ///////////////////////////
-
 
     private class DownloadCoverTask extends AsyncTask<String, Void, Void> {
         protected Void doInBackground(String... link) {
@@ -636,7 +654,7 @@ public class MainActivity extends ActionBarActivity {
                 bitmapAlbumArt.compress(Bitmap.CompressFormat.PNG, 100, aArt);
                 aArt.close();
                 int orientation = getResources().getConfiguration().orientation;
-                if (orientation == 0 || orientation == 180)
+                if (orientation == 1)
                 {
                     //actually display, for portrait
                     runOnUiThread(new Runnable() {
@@ -692,8 +710,7 @@ public class MainActivity extends ActionBarActivity {
     //
     ////////////////////////////////////////////
 
-    public void scaleImage(ImageView view)
-    {
+    public void scaleImage(ImageView view) {
         //Get ImageView
         Drawable drawing = view.getDrawable();
         Bitmap bitmap = ((BitmapDrawable)drawing).getBitmap();
@@ -717,7 +734,6 @@ public class MainActivity extends ActionBarActivity {
     //  PARSE ALL OF THE OUTPUT
     //
     ////////////////////////////////////////////
-
 
     public void parseOutput(String outPut) {
         //every line is sent here and we react to it

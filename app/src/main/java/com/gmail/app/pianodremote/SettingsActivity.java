@@ -22,20 +22,21 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        android.support.v7.widget.Toolbar toolbarChannel = (Toolbar) findViewById(R.id.settingstoolbar);
-        setSupportActionBar(toolbarChannel);
+        android.support.v7.widget.Toolbar toolbarStation = (Toolbar) findViewById(R.id.settingstoolbar);
+        setSupportActionBar(toolbarStation);
         getFragmentManager().beginTransaction().replace(R.id.content_wrapper, new SettingsFragment()).commit();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -63,8 +64,8 @@ public class SettingsActivity extends ActionBarActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_channels:
-                openChannels();
+            case R.id.action_stations:
+                openStations();
                 return true;
             case R.id.action_controller:
                 openController();
@@ -75,9 +76,9 @@ public class SettingsActivity extends ActionBarActivity {
         }
     }
 
-    public void openChannels() {
-        Log.d("draw","load channels");
-        startActivity(new Intent(SettingsActivity.this, ChannelActivity.class));
+    public void openStations() {
+        Log.d("draw","load stations");
+        startActivity(new Intent(SettingsActivity.this, StationActivity.class));
     }
 
     public void openController() {

@@ -37,7 +37,6 @@
         android:layout_height="wrap_content"
         android:minHeight="?android:attr/actionBarSize"
         android:background="@color/transparentlevel2"
-        android:layout_marginTop="25dp"
         app:theme="@style/CustomToolbarTheme"
         app:popupTheme="@style/MyTheme"/>
 

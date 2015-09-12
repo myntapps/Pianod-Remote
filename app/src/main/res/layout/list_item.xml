@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+
+    android:padding="6dip">
+    <!-- Item Name -->
+    <TextView
+        android:id="@+id/toptext"
+
+        android:layout_width="wrap_content"
+        android:layout_height="26dip"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:text="topText" />
+
+    <!-- Actual Item Name Data -->
+    <TextView
+        android:id="@+id/toptextdata"
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/toptext"
+
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:text="topTextdata" />
+
+    <!-- Price Tag -->
+    <TextView
+        android:id="@+id/middletext"
+
+        android:layout_width="wrap_content"
+        android:layout_height="26dip"
+
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/toptext"
+
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:text="middleText" />
+
+    <!-- Actual Price Data -->
+    <TextView
+        android:id="@+id/middletextdata"
+
+        android:layout_width="fill_parent"
+        android:layout_height="26dip"
+
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/toptext"
+        android:layout_toRightOf="@id/middletext"
+
+        android:gravity="center_vertical"
+        android:text="middleTextdata" />
+
+</RelativeLayout>
