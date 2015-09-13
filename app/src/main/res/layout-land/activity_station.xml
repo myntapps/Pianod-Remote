@@ -42,7 +42,7 @@
         android:id="@+id/listView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbarstation" />
+        android:layout_below="@+id/searchView" />
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fabChannel"
@@ -64,12 +64,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/searchView"
-        android:layout_below="@+id/toolbarstation"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_below="@+id/toolbarstation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ProgressBar
         android:layout_width="wrap_content"

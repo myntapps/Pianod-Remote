@@ -30,8 +30,8 @@ android {
         applicationId "com.gmail.app.mynt.pianodremote"
         minSdkVersion 11
         targetSdkVersion 22
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.2.1"
     }
     buildTypes {
         release {

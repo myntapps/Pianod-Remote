@@ -207,9 +207,9 @@ public class StationActivity extends AppCompatActivity {
             toolbarStation.setTitle("Stations");
             stationListView = (ListView) findViewById(R.id.listView);
             fabChannel = (FloatingActionButton) findViewById(R.id.fabChannel);
+            fabChannel.attachToListView(stationListView);
             fabChannel.show();
             fabChannel.setVisibility(View.VISIBLE);
-            fabChannel.attachToListView(stationListView);
             progressSpinner1 = (ProgressBar) findViewById(R.id.progressBar1);
             progressSpinner1.setVisibility(ProgressBar.INVISIBLE);
             String[] testArray = new String[stationList.size()];
@@ -460,6 +460,7 @@ public class StationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_station);
         Toolbar toolbarStation = (Toolbar) findViewById(R.id.toolbarstation);
         toolbarStation.setTitle("Stations");
+        setSupportActionBar(toolbarStation);
         stationListView = (ListView) findViewById(R.id.listView);
         fabChannel = (FloatingActionButton) findViewById(R.id.fabChannel);
         fabChannel.setVisibility(View.GONE);
